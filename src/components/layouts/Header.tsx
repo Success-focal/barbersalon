@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 bg-transparent z-50">
       <div
-        className={`w-full mx-auto flex items-center px-6 py-6
+        className={`w-full mx-auto flex items-center px-4 py-4
           ${isHome ? "justify-center" : "justify-start"}`}
       >
         <Link href="/" className="block">

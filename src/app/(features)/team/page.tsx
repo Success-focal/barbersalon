@@ -1,17 +1,17 @@
-import ServicesSection from "@/components/sections/servcies/serviceSection";
+import TeamSection from "@/components/sections/teamSection";
 import { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Our Services – Suir Barber Co.",
+  title: "Meet the Team – Suir Barber Co.",
   description:
-    "Discover our signature grooming services that blend traditional technique with modern luxury.",
+    "Get to know the passionate professionals behind our craft. Discover the talent that brings Suir Barber Co. to life.",
 };
 
 const Page = () => {
   return (
     <div className="items-center justify-items-center min-h-screen w-full">
-      <ServicesSection />
+      <TeamSection />
     </div>
   );
 };
