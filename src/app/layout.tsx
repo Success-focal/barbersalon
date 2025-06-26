@@ -21,7 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${belleza.variable} antialiased scroll-smooth`}>
+      <body
+        className={`${belleza.variable} antialiased scroll-smooth`}
+      >
         <Header />
         {children}
       </body>

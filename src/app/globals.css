@@ -43,161 +43,159 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-.dark {
-  /* Color Hunt Palette: #222831, #393E46, #948979, #DFD0B8 */
-  /* Converted to OKLCH for better color management */
-
-  --background: oklch(0.95 0.02 70); /* Light cream #DFD0B8 */
-  --foreground: oklch(0.25 0.015 250); /* Dark navy #222831 */
-  --card: oklch(0.98 0.01 70); /* Lighter cream for cards */
-  --card-foreground: oklch(0.25 0.015 250); /* Dark navy */
-  --popover: oklch(0.98 0.01 70); /* Lighter cream */
-  --popover-foreground: oklch(0.25 0.015 250); /* Dark navy */
-  --primary: oklch(0.6 0.04 85); /* Sage green #948979 */
-  --primary-foreground: oklch(0.98 0.01 70); /* Light cream */
-  --secondary: oklch(0.35 0.02 260); /* Charcoal #393E46 */
-  --secondary-foreground: oklch(0.95 0.02 70); /* Light cream */
-  --muted: oklch(0.35 0.02 260); /* Charcoal */
-  --muted-foreground: oklch(0.6 0.04 85); /* Sage green */
-  --accent: oklch(0.6 0.04 85); /* Sage green */
-  --accent-foreground: oklch(0.25 0.015 250); /* Dark navy */
-  --destructive: oklch(0.577 0.245 27.325); /* Keep red for errors */
-  --border: oklch(0.35 0.02 260); /* Charcoal for borders */
-  --input: oklch(0.35 0.02 260); /* Charcoal for inputs */
-  --ring: oklch(0.6 0.04 85); /* Sage green for focus rings */
-
-  /* Chart colors using the palette */
-  --chart-1: oklch(0.6 0.04 85); /* Sage green */
-  --chart-2: oklch(0.35 0.02 260); /* Charcoal */
-  --chart-3: oklch(0.25 0.015 250); /* Dark navy */
-  --chart-4: oklch(0.95 0.02 70); /* Light cream */
-  --chart-5: oklch(0.77 0.03 80); /* Lighter sage */
-
-  /* Sidebar colors */
-  --sidebar: oklch(0.25 0.015 250); /* Dark navy */
-  --sidebar-foreground: oklch(0.95 0.02 70); /* Light cream */
-  --sidebar-primary: oklch(0.6 0.04 85); /* Sage green */
-  --sidebar-primary-foreground: oklch(0.25 0.015 250); /* Dark navy */
-  --sidebar-accent: oklch(0.35 0.02 260); /* Charcoal */
-  --sidebar-accent-foreground: oklch(0.95 0.02 70); /* Light cream */
-  --sidebar-border: oklch(0.35 0.02 260); /* Charcoal */
-  --sidebar-ring: oklch(0.6 0.04 85); /* Sage green */
-}
-
 :root {
   font-family: var(--font-belleza), sans-serif;
-  /* Dark mode using the darker colors from the palette */
-  --background: oklch(0.25 0.015 250); /* Dark navy background */
-  --foreground: oklch(0.95 0.02 70); /* Light cream text */
-  --card: oklch(0.35 0.02 260); /* Charcoal cards */
-  --card-foreground: oklch(0.95 0.02 70); /* Light cream */
-  --popover: oklch(0.35 0.02 260); /* Charcoal */
-  --popover-foreground: oklch(0.95 0.02 70); /* Light cream */
-  --primary: oklch(0.6 0.04 85); /* Sage green */
-  --primary-foreground: oklch(0.25 0.015 250); /* Dark navy */
-  --secondary: oklch(0.35 0.02 260); /* Charcoal */
-  --secondary-foreground: oklch(0.95 0.02 70); /* Light cream */
-  --muted: oklch(0.35 0.02 260); /* Charcoal */
-  --muted-foreground: oklch(0.77 0.03 80); /* Lighter sage */
-  --accent: oklch(71.523% 0.14014 80.482); /* Sage green */
-  --accent-foreground: oklch(0.25 0.015 250); /* Dark navy */
-  --destructive: oklch(0.704 0.191 22.216); /* Keep red for errors */
-  --border: oklch(0.35 0.02 260); /* Charcoal */
-  --input: oklch(0.35 0.02 260); /* Charcoal */
-  --ring: oklch(0.6 0.04 85); /* Sage green */
 
-  /* Chart colors for dark mode */
-  --chart-1: oklch(0.6 0.04 85); /* Sage green */
-  --chart-2: oklch(0.95 0.02 70); /* Light cream */
-  --chart-3: oklch(0.77 0.03 80); /* Lighter sage */
-  --chart-4: oklch(0.35 0.02 260); /* Charcoal */
-  --chart-5: oklch(0.85 0.025 75); /* Very light sage */
+  /* SOPHISTICATED BARBERSHOP PALETTE */
+  /* Deep luxurious blacks with warm golden accents and vibrant highlights */
 
-  /* Sidebar colors for dark mode */
-  --sidebar: oklch(0.25 0.015 250); /* Dark navy */
-  --sidebar-foreground: oklch(0.95 0.02 70); /* Light cream */
-  --sidebar-primary: oklch(0.6 0.04 85); /* Sage green */
-  --sidebar-primary-foreground: oklch(0.25 0.015 250); /* Dark navy */
-  --sidebar-accent: oklch(0.35 0.02 260); /* Charcoal */
-  --sidebar-accent-foreground: oklch(0.95 0.02 70); /* Light cream */
-  --sidebar-border: oklch(0.35 0.02 260); /* Charcoal */
-  --sidebar-ring: oklch(0.6 0.04 85); /* Sage green */
+  --background: oklch(0.08 0.005 240); /* Rich charcoal black - elegant base */
+  --foreground: oklch(0.98 0.008 45); /* Warm ivory - premium text */
+
+  --card: oklch(0.12 0.015 250); /* Slightly lighter charcoal for cards */
+  --card-foreground: oklch(0.95 0.012 40); /* Warm white for card text */
+
+  --popover: oklch(0.1 0.01 240); /* Deep charcoal for popovers */
+  --popover-foreground: oklch(0.96 0.01 35); /* Clean white text */
+
+  --primary: oklch(0.75 0.15 65); /* Vibrant golden amber - signature color */
+  --primary-foreground: oklch(0.08 0.005 240); /* Deep black text on gold */
+
+  --secondary: oklch(0.2 0.025 250); /* Rich slate - sophisticated accent */
+  --secondary-foreground: oklch(0.92 0.015 45); /* Warm light text */
+
+  --muted: oklch(0.15 0.02 245); /* Muted charcoal */
+  --muted-foreground: oklch(0.65 0.025 50); /* Warm gray text */
+
+  --accent: oklch(0.68 0.18 25); /* Bold copper orange - energetic accent */
+  --accent-foreground: oklch(0.05 0.005 240); /* Deep black on copper */
+
+  --destructive: oklch(0.65 0.22 15); /* Warm red - elegant error color */
+  --border: oklch(0.25 0.035 250); /* Subtle borders with character */
+  --input: oklch(0.18 0.025 245); /* Input backgrounds */
+  --ring: oklch(0.75 0.15 65); /* Golden focus rings */
+
+  /* CHART COLORS - Sophisticated palette */
+  --chart-1: oklch(0.75 0.15 65); /* Primary gold */
+  --chart-2: oklch(0.68 0.18 25); /* Copper accent */
+  --chart-3: oklch(0.45 0.12 280); /* Deep purple luxury */
+  --chart-4: oklch(0.6 0.14 180); /* Teal sophistication */
+  --chart-5: oklch(0.55 0.16 320); /* Magenta edge */
+
+  /* SIDEBAR - Premium dark theme */
+  --sidebar: oklch(0.05 0.008 235); /* Ultra-deep black */
+  --sidebar-foreground: oklch(0.95 0.012 40); /* Warm white */
+  --sidebar-primary: oklch(0.75 0.15 65); /* Golden primary */
+  --sidebar-primary-foreground: oklch(0.05 0.008 235); /* Deep black */
+  --sidebar-accent: oklch(0.68 0.18 25); /* Copper accent */
+  --sidebar-accent-foreground: oklch(0.95 0.012 40); /* Warm white */
+  --sidebar-border: oklch(0.22 0.03 250); /* Defined borders */
+  --sidebar-ring: oklch(0.75 0.15 65); /* Golden focus */
+}
+
+.dark {
+  /* ENHANCED DARK MODE - Even more dramatic and luxurious */
+  --background: oklch(0.04 0.008 230); /* Deeper black - ultimate luxury */
+  --foreground: oklch(0.98 0.008 45); /* Pristine warm white */
+
+  --card: oklch(0.08 0.015 240); /* Rich card backgrounds */
+  --card-foreground: oklch(0.96 0.01 40); /* Clean card text */
+
+  --popover: oklch(0.06 0.012 235); /* Deep popover backgrounds */
+  --popover-foreground: oklch(0.97 0.008 35); /* Crisp popover text */
+
+  --primary: oklch(0.8 0.18 60); /* Brighter gold in dark mode */
+  --primary-foreground: oklch(0.04 0.008 230); /* Ultra-deep black */
+
+  --secondary: oklch(0.18 0.03 250); /* Rich secondary */
+  --secondary-foreground: oklch(0.94 0.015 45); /* Warm secondary text */
+
+  --muted: oklch(0.12 0.022 245); /* Sophisticated muted tones */
+  --muted-foreground: oklch(0.7 0.03 50); /* Enhanced muted text */
+
+  --accent: oklch(0.72 0.2 20); /* Vibrant copper in dark mode */
+  --accent-foreground: oklch(0.04 0.008 230); /* Deep black on accent */
+
+  --destructive: oklch(0.68 0.24 12); /* Striking red for dark mode */
+  --border: oklch(0.28 0.04 250); /* More defined borders */
+  --input: oklch(0.15 0.028 240); /* Rich input backgrounds */
+  --ring: oklch(0.8 0.18 60); /* Brighter golden focus */
+
+  /* ENHANCED CHART COLORS for dark mode */
+  --chart-1: oklch(0.8 0.18 60); /* Brighter gold */
+  --chart-2: oklch(0.72 0.2 20); /* Vibrant copper */
+  --chart-3: oklch(0.5 0.15 285); /* Royal purple */
+  --chart-4: oklch(0.65 0.16 175); /* Bright teal */
+  --chart-5: oklch(0.6 0.18 315); /* Electric magenta */
+
+  /* ENHANCED SIDEBAR for dark mode */
+  --sidebar: oklch(0.03 0.01 225); /* Absolute black luxury */
+  --sidebar-foreground: oklch(0.97 0.01 40); /* Pure warm white */
+  --sidebar-primary: oklch(0.8 0.18 60); /* Bright gold */
+  --sidebar-primary-foreground: oklch(0.03 0.01 225); /* Absolute black */
+  --sidebar-accent: oklch(0.72 0.2 20); /* Vibrant copper */
+  --sidebar-accent-foreground: oklch(0.97 0.01 40); /* Pure white */
+  --sidebar-border: oklch(0.25 0.035 250); /* Strong borders */
+  --sidebar-ring: oklch(0.8 0.18 60); /* Bright golden focus */
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+    /* Subtle texture overlay to enhance the sophisticated look */
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background-color: oklch(0.92 0.012 190); /* soft slate-cyan */
+    border-radius: var(--radius-md);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: oklch(0.58 0.18 160); /* muted emerald-cyan */
+    border-radius: var(--radius-md);
+    border: 2px solid oklch(0.92 0.012 190); /* blend with track */
+    transition: background-color 0.3s ease;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: oklch(0.68 0.2 200); /* brightened cyan hover */
+  }
+
+  /* firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(95.776% 0.21432 113.499) /* thumb */
+      oklch(21.778% 0.03485 194.939); /* track */
   }
 }
 
-@layer utilities {
-  /* === GOLDEN THEME === */
-  .barber-gradient {
-    background: linear-gradient(135deg, #1f1f1f 0%, #333 30%, #d4af37 100%);
-  }
+::selection {
+  background-image: linear-gradient(
+    135deg,
+    oklch(78.422% 0.15916 97.463),
+    /* deep violet-slate */ oklch(50.539% 0.06443 105.156),
+    /* elegant navy-indigo */ oklch(27.995% 0.02811 75.518)
+      /* golden-citrine glow */
+  );
+  background-color: oklch(
+    83.275% 0.17151 82.058
+  ); /* fallback for no-gradient browsers */
 
-  .barber-accent {
-    color: #d4af37;
-  }
-
-  .barber-dark {
-    background-color: #1f1f1f;
-  }
-
-  .barber-charcoal {
-    background-color: #2b2b2b;
-  }
-
-  .barber-sage {
-    background-color: #bfa76f;
-  }
-
-  .barber-cream {
-    background-color: #f8f1e5;
-  }
-
-  /* === GLITTERY GOLD TEXT === */
-  .glitter-gold {
-    background: linear-gradient(90deg, #d4af37, #f7e199, #d4af37);
-    background-size: 200% auto;
-
-    /* Cross-browser compatibility for text gradient */
-    background-clip: text;
-    -webkit-background-clip: text;
-
-    /* Text fill transparency */
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-
-    /* Animation */
-    animation: shimmer 3s linear infinite;
-  }
-
-  .underline-glitter {
-    position: relative;
-  }
-
-  .underline-glitter::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    height: 2px;
-    width: 100%;
-    background: linear-gradient(90deg, #d4af37, #f7e199, #d4af37);
-    background-size: 200% auto;
-    animation: shimmer 2s linear infinite;
-  }
-
-  @keyframes shimmer {
-    0% {
-      background-position: 200% center;
-    }
-    100% {
-      background-position: -200% center;
-    }
-  }
+  color: oklch(19.547% 0.02196 19.18); /* warm ivory-white text */
+  text-shadow: 0 0 1px oklch(0.25 0.02 250 / 0.3),
+    0 0 4px oklch(0.6 0.06 80 / 0.15);
 }
