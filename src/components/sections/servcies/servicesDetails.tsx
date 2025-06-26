@@ -106,12 +106,12 @@ export function ServiceDetailsList() {
 export function ServiceConsultationCTA() {
   return (
     <div className="mt-16 text-center group">
-      <div className="inline-flex items-center bg-muted/40 backdrop-blur-sm rounded-full px-8 py-4 border border-barber-accent/20">
+      <div className="inline-flex items-center bg-muted/40 backdrop-blur-sm rounded-full px-8 py-4 border border-accent/20">
         <CheckCircle
           className="w-6 h-6 text-foreground mr-3 transition-colors duration-300 group-hover:text-accent"
           aria-hidden="true"
         />
-        <span className="text-foreground font-medium">
+        <span className="text-foreground font-medium text-xs sm:text-base">
           All services include complimentary consultation
         </span>
       </div>

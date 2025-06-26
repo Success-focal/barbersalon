@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function AboutSection() {
   return (
     <section
-      className="relative w-full min-h-screen bg-cover bg-center bg-fixed overflow-hidden flex flex-col items-center justify-center py-24 px-6 sm:px-12 lg:px-24"
+      className="relative bg-cover bg-center bg-fixed overflow-hidden flex flex-col items-center justify-center py-24 md:py-10 px-6 sm:px-12 lg:px-24"
       style={{ backgroundImage: "url('/images/Background.webp')" }}
     >
       {/* Background overlays - lowest z-index */}
@@ -18,11 +18,11 @@ export default function AboutSection() {
       <div className="absolute inset-0 bg-background/10 mix-blend-multiply z-0"></div>
 
       {/* Hero Section */}
-      <div className="relative z-10 max-w-3xl text-center mb-16">
+      <div className="relative z-10 max-w-2xl text-center mb-16">
         <div className="flex items-center justify-center mb-4">
           <div className="w-12 h-px bg-accent mr-4" />
           <span className="text-accent font-semibold tracking-wider uppercase text-[2.168rem]">
-            Hear From Our Happy Clients
+            About us
           </span>
           <div className="w-12 h-px bg-accent ml-4" />
         </div>
@@ -33,7 +33,7 @@ export default function AboutSection() {
       </div>
 
       {/* Content container with highest z-index */}
-      <div className="relative z-10 flex flex-col md:flex-row items-center gap-12 max-w-5xl w-full">
+      <div className="relative z-10 flex flex-col md:flex-row items-center gap-12 max-w-4xl w-full">
         {/* Image Side */}
         <div className="relative w-full md:w-3/4 h-80 md:h-[480px] rounded-xl overflow-hidden shadow-lg">
           <Image
@@ -74,9 +74,7 @@ export default function AboutSection() {
         Where tradition meets style, your journey to confidence starts here.
       </blockquote>
 
-      <div className="relative z-20 w-full">
-        <Navbar />
-      </div>
+      <Navbar />
     </section>
   );
 }
