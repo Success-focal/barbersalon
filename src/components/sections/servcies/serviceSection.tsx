@@ -10,7 +10,7 @@ import {
 export default function ServicesSection() {
   return (
     <section
-      className="relative w-full min-h-screen bg-cover bg-center bg-fixed overflow-hidden flex items-center justify-center py-24"
+      className="relative w-full min-h-[100vh] bg-cover bg-center bg-fixed flex items-center justify-center py-24 md:py-10"
       style={{ backgroundImage: "url('/images/Background.webp')" }}
     >
       {/* Overlays */}
@@ -18,9 +18,9 @@ export default function ServicesSection() {
       <div className="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-black/30"></div>
       <div className="absolute inset-0 bg-background/10 mix-blend-multiply"></div>
 
-      <div className="flex flex-col items-center text-center relative z-10 mx-auto lg:px-20 w-full max-w-7xl">
+      <div className="flex flex-col items-center text-center relative z-10 mx-auto px-2 lg:px-20 w-full max-w-7xl">
         {/* Section Header */}
-        <div className="sticky top-0 z-20  mb-12">
+        <div className="relative z-10 mb-12 pt-4">
           <div className="flex items-center justify-center mb-4">
             <div className="w-12 h-px bg-accent mr-4"></div>
             <span className="text-accent font-semibold tracking-wider uppercase text-[2.168rem]">
@@ -41,7 +41,7 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        <div className="max-w-6xl w-full px-4 sm:px-6 lg:px-0">
+        <div className="max-w-4xl w-full px-4 sm:px-6 lg:px-0 mx-auto">
           <ServiceCardList />
 
           <div className="mt-24 mb-12 text-center max-w-3xl mx-auto px-4 sm:px-6 ">

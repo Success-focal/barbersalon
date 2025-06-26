@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Belleza } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layouts/Header";
+import AudioPlayer from "@/components/layouts/beatPlayer";
 
 const belleza = Belleza({
   variable: "--font-belleza",
@@ -21,11 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${belleza.variable} antialiased scroll-smooth`}
-      >
+      <body className={`${belleza.variable} antialiased scroll-smooth`}>
         <Header />
         {children}
+        <AudioPlayer />
       </body>
     </html>
   );

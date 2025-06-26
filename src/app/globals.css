@@ -199,3 +199,7 @@
   text-shadow: 0 0 1px oklch(0.25 0.02 250 / 0.3),
     0 0 4px oklch(0.6 0.06 80 / 0.15);
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

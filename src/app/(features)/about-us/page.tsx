@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const Page = () => {
   return (
-    <div className="items-center justify-items-center min-h-screen w-full">
+    <div className="items-center justify-items-center min-h-[100vh] w-full">
       <AboutSection />
     </div>
   );

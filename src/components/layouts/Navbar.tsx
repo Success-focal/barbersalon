@@ -11,8 +11,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Desktop Sidebar Nav */}
-      <nav className="z-20 fixed top-1/2 left-10 -translate-y-1/2 hidden lg:flex flex-col gap-4 text-foreground">
+      <nav className="z-20 fixed top-1/2 left-10 -translate-y-1/2 hidden xl:flex xl:flex-col flex-row gap-4 text-foreground scrollbar-hide">
         {navLinks.map(({ label, href }) => {
           const isActive = pathname === href;
 
@@ -26,7 +25,7 @@ export default function Navbar() {
                 isActive
                   ? "text-primary bg-accent/30 hover:text-primary-foreground"
                   : "text-muted-foreground hover:text-secondary",
-                "hover:bg-accent" // yellowish glow on hover
+                "hover:bg-accent"
               )}
             >
               {label}
@@ -36,25 +35,27 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile/Tablet Bottom Nav */}
-      <nav className="z-20 fixed bottom-10 left-1/2 -translate-x-1/2 flex lg:hidden gap-6 px-6 py-3 rounded-xl bg-background/80 text-primary backdrop-blur-md shadow-xl ring-1 ring-border/40">
-        {navLinks.map(({ label, href }) => {
-          const isActive = pathname === href;
+      <nav className="z-20 fixed bottom-10 left-1/2 -translate-x-1/2 xl:hidden px-4 py-4 bg-transparent backdrop-blur-md shadow-xl ring-1 ring-border/40 w-[95%] md:w-[70%] overflow-hidden">
+        <div className="flex flex-row gap-6 overflow-x-auto justify-between whitespace-nowrap scrollbar-hide px-4 scroll-smooth">
+          {navLinks.map(({ label, href }) => {
+            const isActive = pathname === href;
 
-          return (
-            <Link
-              key={href}
-              href={href}
-              className={cn(
-                "relative text-sm font-medium transition-colors duration-300",
-                isActive
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-accent"
-              )}
-            >
-              {label}
-            </Link>
-          );
-        })}
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={cn(
+                  "snap-start text-sm font-medium transition-colors duration-300",
+                  isActive
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-accent"
+                )}
+              >
+                {label}
+              </Link>
+            );
+          })}
+        </div>
       </nav>
     </>
   );
