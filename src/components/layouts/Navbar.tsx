@@ -11,7 +11,14 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="z-20 fixed top-1/2 left-10 -translate-y-1/2 hidden xl:flex xl:flex-col flex-row gap-4 text-foreground scrollbar-hide">
+      {/* Desktop Side Navbar */}
+      <nav
+        className={cn(
+          "z-20 fixed top-1/2 left-10 -translate-y-1/2",
+          "transition-all duration-500 ease-in-out opacity-100 xl:flex",
+          "flex-col gap-4 text-foreground scrollbar-hide hidden"
+        )}
+      >
         {navLinks.map(({ label, href }) => {
           const isActive = pathname === href;
 
@@ -20,8 +27,8 @@ export default function Navbar() {
               key={href}
               href={href}
               className={cn(
-                "relative px-4 py-2 bg-muted/30 shadow-md ring-1",
-                "transition-all duration-300",
+                "relative px-4 py-2 bg-muted/30 shadow-md ring-1 rounded-md",
+                "transition-all duration-300 ease-in-out",
                 isActive
                   ? "text-primary bg-accent/30 hover:text-primary-foreground"
                   : "text-muted-foreground hover:text-secondary",
@@ -34,8 +41,15 @@ export default function Navbar() {
         })}
       </nav>
 
-      {/* Mobile/Tablet Bottom Nav */}
-      <nav className="z-20 fixed bottom-10 left-1/2 -translate-x-1/2 xl:hidden px-4 py-4 bg-transparent backdrop-blur-md shadow-xl ring-1 ring-border/40 w-[95%] md:w-[70%] overflow-hidden">
+      {/* Mobile Bottom Navbar */}
+      <nav
+        className={cn(
+          "z-20 fixed bottom-10 left-1/2 -translate-x-1/2",
+          "px-4 py-4 bg-background/80 backdrop-blur-md shadow-xl ring-1 ring-border/40",
+          "w-[95%] md:w-[70%] overflow-hidden",
+          "transition-all duration-500 ease-in-out opacity-100 xl:hidden"
+        )}
+      >
         <div className="flex flex-row gap-6 overflow-x-auto justify-between whitespace-nowrap scrollbar-hide px-4 scroll-smooth">
           {navLinks.map(({ label, href }) => {
             const isActive = pathname === href;

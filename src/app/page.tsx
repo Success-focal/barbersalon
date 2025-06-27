@@ -3,11 +3,9 @@ import HomeSection from "@/components/sections/heroSection";
 
 export default function Home() {
   return (
-    <div className="items-center justify-items-center min-h-screen">
+    <div className="items-center justify-items-center min-h-[100vh]">
       <HomeSection />
-      {/* <main className="flex flex-col w-full items-center justify-center">
-        <ServicesSection />
-      </main> */}
+     
     </div>
   );
 }

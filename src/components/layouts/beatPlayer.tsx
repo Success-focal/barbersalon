@@ -5,15 +5,14 @@ import { Volume2, VolumeX } from "lucide-react";
 import { Howl } from "howler";
 
 const AudioPlayer = () => {
-  const [isMuted, setIsMuted] = useState(false); // Should show VolumeX initially
+  const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const soundRef = useRef<Howl | null>(null);
   const hasInteractedRef = useRef(false);
 
   useEffect(() => {
-    // Create the audio object - start muted
     soundRef.current = new Howl({
-      src: ["/audio/beats.mp3"],
+      src: ["/audio/beats.ogg"],
       loop: true,
       volume: 0.5,
       mute: true, // Start muted
@@ -62,7 +61,7 @@ const AudioPlayer = () => {
   return (
     <div className="fixed top-6 right-6 z-50 p-1">
       <Button variant="ghost" size="icon" onClick={toggleMute}>
-        {isMuted ? (
+        {!hasInteractedRef.current || isMuted ? (
           <VolumeX className="w-6 h-6 text-muted-foreground transition-all hover:scale-110" />
         ) : (
           <Volume2 className="w-6 h-6 text-primary transition-all hover:scale-110" />
