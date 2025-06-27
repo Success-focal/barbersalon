@@ -98,6 +98,50 @@ export const teamMembers: TeamMember[] = [
     ],
     instagram: "https://instagram.com/dev_care",
   },
+  {
+    name: "Maya Patel",
+    role: "Master Colorist",
+    image: "/professionals/maya.webp",
+    expertise: "Hair coloring, highlights, balayage",
+    skills: ["Color theory", "Grey blending", "Creative color techniques"],
+    instagram: "https://instagram.com/maya_colors",
+  },
+  {
+    name: "Rohan Thapa",
+    role: "Beard Grooming Expert",
+    image: "/professionals/rohan.webp",
+    expertise: "Beard trims, shaping, and maintenance",
+    skills: ["Beard conditioning", "Hot towel treatments", "Line-ups"],
+    instagram: "https://instagram.com/rohan_beardking",
+  },
+  {
+    name: "Sana Gurung",
+    role: "Skincare Specialist",
+    image: "/professionals/sana.webp",
+    expertise: "Facials, exfoliation, and skin rejuvenation",
+    skills: ["Acne treatments", "Anti-aging therapies", "Product advice"],
+    instagram: "https://instagram.com/sana_glow",
+  },
+  {
+    name: "Kiran Rai",
+    role: "Men's Grooming Consultant",
+    image: "/professionals/kiran.webp",
+    expertise: "Personalized grooming plans",
+    skills: [
+      "Styling advice",
+      "Product selection",
+      "Lifestyle grooming coaching",
+    ],
+    instagram: "https://instagram.com/kiran_grooming",
+  },
+  {
+    name: "Neha Shrestha",
+    role: "Hair Extensions Specialist",
+    image: "/professionals/neha.webp",
+    expertise: "Tape-in, clip-in, and keratin extensions",
+    skills: ["Extension application", "Maintenance", "Custom blending"],
+    instagram: "https://instagram.com/neha_extensions",
+  },
 ];
 
 export const clientTestimonials: ClientTestimonial[] = [
@@ -109,6 +153,7 @@ export const clientTestimonials: ClientTestimonial[] = [
     rating: 5,
     avatarInitials: "RT",
     image: "/avatar/ravi.avif",
+    location: "Kathmandu, Nepal",
   },
   {
     name: "Pramesh Lama",
@@ -118,6 +163,7 @@ export const clientTestimonials: ClientTestimonial[] = [
     rating: 4,
     avatarInitials: "PL",
     image: "/avatar/pramesh.avif",
+    location: "Patan, Nepal",
   },
   {
     name: "Aayush Bhattarai",
@@ -127,6 +173,7 @@ export const clientTestimonials: ClientTestimonial[] = [
     rating: 5,
     avatarInitials: "AB",
     image: "/avatar/aayush.avif",
+    location: "Bhaktapur, Nepal",
   },
   {
     name: "Kiran Sharma",
@@ -136,6 +183,7 @@ export const clientTestimonials: ClientTestimonial[] = [
     rating: 5,
     avatarInitials: "KS",
     image: "/avatar/kiran.avif",
+    location: "Lalitpur, Nepal",
   },
   {
     name: "Suman Maharjan",
@@ -145,5 +193,6 @@ export const clientTestimonials: ClientTestimonial[] = [
     rating: 5,
     avatarInitials: "SM",
     image: "/avatar/suman.avif",
+    location: "Kathmandu, Nepal",
   },
 ];

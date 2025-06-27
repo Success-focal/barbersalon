@@ -32,6 +32,13 @@ export default function TestimonialSection() {
           Real experiences from real people who have transformed their look with
           us.
         </p>
+
+        {/* Trust Signal */}
+        <p className="text-xs text-muted-foreground text-center mb-6">
+          Trusted by 5,000+ clients · Featured in <em>Style Nepal</em> · Rated
+          4.9/5 on Google
+        </p>
+
         <Button className="text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3">
           Join Our Happy Clients
         </Button>
@@ -57,13 +64,17 @@ export default function TestimonialSection() {
                       </AvatarFallback>
                     )}
                   </Avatar>
-                  {/* Name and service stacked */}
+
+                  {/* Name, service, and date/location stacked */}
                   <div className="flex flex-col min-w-0 flex-1">
                     <h3 className="text-lg sm:text-xl font-bold text-foreground leading-tight break-words">
                       {testimonial.name}
                     </h3>
                     <p className="text-xs sm:text-sm text-muted-foreground mt-1 break-words">
                       {testimonial.service}
+                    </p>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+                      {testimonial.location}
                     </p>
                   </div>
                 </CardHeader>
@@ -80,13 +91,6 @@ export default function TestimonialSection() {
                       />
                     ))}
                   </div>
-                  <Button
-                    size="sm"
-                    variant="secondary"
-                    className="self-start text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 whitespace-nowrap"
-                  >
-                    Book Your Experience
-                  </Button>
                 </CardContent>
               </Card>
             </div>
@@ -114,6 +118,26 @@ export default function TestimonialSection() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Leave a Review CTA */}
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
+        <Button
+          variant="outline"
+          size="lg"
+          onClick={() =>
+            window.open("https://forms.gle/6GJXWR2bqU8zmbAC6", "_blank")
+          }
+          className="tracking-wide font-semibold text-accent border-accent hover:bg-accent hover:text-background transition-transform transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+        >
+          Write a review
+        </Button>
+      </div>
+
+      {/* Closing Inspirational Quote */}
+      <blockquote className="mt-10 max-w-2xl mx-auto text-center italic text-accent text-xl font-semibold relative z-10 px-4">
+        &quot;Style is a way to say who you are without having to speak.&quot;
+      </blockquote>
+
       <Navbar />
     </section>
   );

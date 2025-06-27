@@ -26,4 +26,5 @@ export interface ClientTestimonial {
   rating: number;
   avatarInitials: string;
   image: string;
+  location: string;
 }
