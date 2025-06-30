@@ -58,7 +58,7 @@ export function ServiceCardList() {
               <p className="text-sm text-muted-foreground leading-relaxed mb-6 min-h-[72px]">
                 {description}
               </p>
-              <Button className="w-full bg-foreground text-background font-semibold py-3 rounded-lg shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:bg-accent">
+              <Button className="w-full  text-background font-semibold py-3 rounded-lg shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:bg-accent">
                 Book Now
               </Button>
             </CardContent>

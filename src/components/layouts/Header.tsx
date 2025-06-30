@@ -10,10 +10,10 @@ export default function Header() {
   const isHome = pathname === "/";
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-5 transition-all duration-500 ease-in-out">
+    <header className="fixed top-0 left-0 right-0 z-10 transition-all duration-500 ease-in-out">
       <div
         className={cn(
-          "w-full mx-auto flex items-center px-4 transition-all duration-700 ease-in-out py-4",
+          "w-full flex items-center px-4 py-4 transition-all duration-700 ease-in-out",
           isHome ? "justify-center" : "justify-start"
         )}
       >
@@ -21,16 +21,20 @@ export default function Header() {
           href="/"
           className="block transition-transform duration-700 ease-in-out"
         >
-          <Image
-            src="/logo/logo.png"
-            alt="Barber Salon Logo"
-            width={60}
-            height={60}
+          <div
             className={cn(
-              "w-auto transition-all duration-700 ease-in-out",
-              isHome ? "h-28 sm:h-32 md:h-40" : "h-16 sm:h-20 md:h-24"
+              "relative aspect-square",
+              isHome ? "h-32 sm:h-40 md:h-48" : "h-14 sm:h-20 md:h-24"
             )}
-          />
+          >
+            <Image
+              src="/logo/logo.svg"
+              alt="Barber Salon Logo"
+              fill
+              priority
+              className="object-contain transition-all duration-700 ease-in-out"
+            />
+          </div>
         </Link>
       </div>
     </header>
