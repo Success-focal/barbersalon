@@ -7,6 +7,7 @@ import { Star } from "lucide-react";
 import { EmblaCarousel } from "../ui/custom/emblaCarousel";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Navbar from "../layouts/Navbar";
+import Link from "next/link";
 
 export default function TestimonialSection() {
   return (
@@ -40,7 +41,7 @@ export default function TestimonialSection() {
         </p>
 
         <Button className="text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3">
-          Join Our Happy Clients
+          <Link href="/contact#contact-form">Join Our Happy Clients</Link>
         </Button>
       </div>
 

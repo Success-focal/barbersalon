@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { detailedServices, services } from "@/lib/data/dataPool";
 import { CheckCircle, Clock } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export function ServiceCardList() {
   return (
@@ -59,7 +60,7 @@ export function ServiceCardList() {
                 {description}
               </p>
               <Button className="w-full  text-background font-semibold py-3 rounded-lg shadow-md hover:shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:bg-accent">
-                Book Now
+                <Link href="/contact#contact-form">Book Now</Link>
               </Button>
             </CardContent>
           </Card>
