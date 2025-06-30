@@ -3,6 +3,7 @@ import { Belleza } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layouts/Header";
 import AudioPlayer from "@/components/layouts/beatPlayer";
+import { Toaster } from "sonner";
 
 const belleza = Belleza({
   variable: "--font-belleza",
@@ -28,6 +29,7 @@ export default function RootLayout({
         <Header />
         {children}
         <AudioPlayer />
+        <Toaster position="top-center" />
       </body>
     </html>
   );

@@ -73,7 +73,7 @@
 
   --destructive: oklch(0.65 0.22 15); /* Warm red - elegant error color */
   --border: oklch(0.25 0.035 250); /* Subtle borders with character */
-  --input: oklch(0.18 0.025 245); /* Input backgrounds */
+  --input: oklch(41.247% 0.02903 244.78); /* Input backgrounds */
   --ring: oklch(0.75 0.15 65); /* Golden focus rings */
 
   /* CHART COLORS - Sophisticated palette */
@@ -203,4 +203,9 @@
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #575742 inset !important;
+  -webkit-text-fill-color: #f8d1d1 !important;
 }
