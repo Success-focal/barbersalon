@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <section
-      className="relative w-full min-h-[100vh] bg-cover bg-center bg-fixed overflow-hidden py-20 px-6 sm:px-10 md:px-16 lg:px-24"
+      className="relative w-full min-h-[100vh] bg-cover bg-center bg-fixed overflow-hidden py-24 md:py-10 px-6 sm:px-10 md:px-16 lg:px-24"
       style={{ backgroundImage: "url('/images/Background.webp')" }}
     >
       {/* Overlays */}
@@ -118,6 +118,12 @@ export default function Page() {
               </ul>
             </div>
           </div>
+        </div>
+        <div className="border-t border-border text-center text-sm text-muted-foreground tracking-wide">
+          <small>
+            &copy; {new Date().getFullYear()} Suri Barber Co. All rights
+            reserved. reserved.
+          </small>
         </div>
       </div>
 

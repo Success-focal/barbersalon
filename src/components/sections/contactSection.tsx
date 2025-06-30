@@ -104,11 +104,11 @@ export function ContactForm() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4">
+    <div className="w-full max-w-4xl mx-auto p-4" id="contact-form">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
         {/* Contact Type Selection */}
         <Card className="border-2 border-dashed border-muted-foreground/20 bg-muted/30">
-          <CardContent className="pt-6">
+          <CardContent>
             <FormField id="type" label="" error={errors.type}>
               <Controller
                 name="type"
