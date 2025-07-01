@@ -5,6 +5,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
+/**
+ * Header – Fixed top navigation header showing the brand logo.
+ *
+ * Behavior:
+ * - On the home page ("/"), the logo is centered and displayed larger.
+ * - On other pages, the logo shifts to the left and scales down.
+ *
+ * Uses Next.js `usePathname` to detect the current route and conditionally
+ * adjust layout and logo size accordingly.
+ *
+ * Smooth transitions for position and size changes enhance user experience.
+ */
+
 export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";

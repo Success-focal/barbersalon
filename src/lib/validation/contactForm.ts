@@ -1,3 +1,18 @@
+/**
+ * contactFormSchema – Defines the validation rules for the contact form.
+ * Ensures data integrity for both general queries and appointment bookings.
+ *
+ * Key validation logic:
+ * - full_name, email, and message are always required.
+ * - type must be either "query" or "appointment".
+ * - If type is "appointment", service and preferred_time are required.
+ * - If type is "query", service and preferred_time must be empty.
+ * - preferred_time, if provided, must be a valid date-time string.
+ *
+ * This schema helps provide immediate, clear validation feedback to users,
+ * and prevents invalid data from being submitted to the backend.
+ */
+
 import { z } from "zod";
 
 export const contactFormSchema = z

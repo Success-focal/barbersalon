@@ -1,3 +1,10 @@
+/**
+ * validateRecaptcha – Sends the reCAPTCHA token to the backend API for verification.
+ * Throws an error if the request fails or the token is invalid.
+ * Returns the verification response data if successful.
+ *
+ * @param token - The reCAPTCHA token generated on the client side.
+ */
 export async function validateRecaptcha(token: string) {
   const res = await fetch("/api/validateRecaptcha", {
     method: "POST",

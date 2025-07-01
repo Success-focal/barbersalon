@@ -1,74 +1,108 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Volume2, VolumeX } from "lucide-react";
-import { Howl } from "howler";
 
-const AudioPlayer = () => {
-  const [isMuted, setIsMuted] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
+import { useEffect, useRef, useState } from "react";
+import { Howl } from "howler";
+import { Volume2, VolumeOff } from "lucide-react";
+import { Button } from "../ui/button";
+
+/**
+ * AudioPlayer – Background audio controller component.
+ *
+ * Features:
+ * - Automatically attempts to autoplay a looping background audio track ("/audio/beats.ogg") on page load.
+ * - Starts muted to comply with browser autoplay restrictions.
+ * - Listens for first user interaction (click or scroll) to unmute and start playback if autoplay was blocked.
+ * - Provides a toggle button in the top-right corner to mute/unmute audio manually.
+ * - Uses Howler.js for reliable cross-browser audio control.
+ *
+ * Notes:
+ * - The component manages playback and mute state internally.
+ * - Uses refs to track sound instance and user interaction state for smooth UX.
+ */
+
+export default function AudioPlayer() {
+  // State to track whether audio is muted or not
+  const [muted, setMuted] = useState(true);
+
+  // Ref to hold the Howl sound instance so it persists across renders
   const soundRef = useRef<Howl | null>(null);
-  const hasInteractedRef = useRef(false);
+
+  // Ref to know if the user has interacted (clicked or scrolled)
+  const interactedRef = useRef(false);
+
+  // Function to toggle mute/unmute when user clicks the button
+  function toggleMute() {
+    if (!soundRef.current) return;
+
+    if (muted) {
+      // If currently muted, unmute and play the sound
+      soundRef.current.mute(false);
+      soundRef.current.play();
+      setMuted(false);
+    } else {
+      // If currently unmuted, mute the sound
+      soundRef.current.mute(true);
+      setMuted(true);
+    }
+  }
 
   useEffect(() => {
+    // Initialize the Howl sound instance with the audio file
     soundRef.current = new Howl({
       src: ["/audio/beats.ogg"],
       loop: true,
-      volume: 0.5,
-      mute: true, // Start muted
-      autoplay: true,
-      onplay: () => setIsPlaying(true),
-      onpause: () => setIsPlaying(false),
-      onstop: () => setIsPlaying(false),
+      volume: 0.25,
+      mute: true, // Start muted because browsers block autoplay with sound
     });
 
-    const tryPlay = () => {
-      if (!soundRef.current || hasInteractedRef.current) return;
+    // Try to autoplay the sound immediately (muted)
+    soundRef.current.play();
 
-      hasInteractedRef.current = true;
-      // Unmute and play on first interaction
+    // Handler for first user interaction - unmute and play sound
+    function handleUserInteraction() {
+      if (interactedRef.current || !soundRef.current) return;
+
+      // Mark as interacted to avoid multiple triggers
+      interactedRef.current = true;
+
+      // Unmute and play sound on user interaction
       soundRef.current.mute(false);
       soundRef.current.play();
-    };
+      setMuted(false);
 
-    // Try auto-play immediately
-    tryPlay();
+      // Remove event listeners after first interaction
+      window.removeEventListener("click", handleUserInteraction);
+      window.removeEventListener("scroll", handleUserInteraction);
+    }
 
-    // If autoplay blocked, play on first interaction
-    window.addEventListener("click", tryPlay, { once: true });
-    window.addEventListener("scroll", tryPlay, { once: true });
+    // Listen for user click or scroll to enable sound
+    window.addEventListener("click", handleUserInteraction);
+    window.addEventListener("scroll", handleUserInteraction);
 
+    // Clean up on component unmount
     return () => {
-      window.removeEventListener("click", tryPlay);
-      window.removeEventListener("scroll", tryPlay);
-      soundRef.current?.unload();
+      if (soundRef.current) {
+        soundRef.current.unload();
+        soundRef.current = null;
+      }
+      window.removeEventListener("click", handleUserInteraction);
+      window.removeEventListener("scroll", handleUserInteraction);
     };
   }, []);
 
-  const toggleMute = () => {
-    if (!soundRef.current) return;
-
-    const newMuted = !isMuted;
-    soundRef.current.mute(newMuted);
-    setIsMuted(newMuted);
-
-    // If unmuting and not playing, start playing
-    if (!newMuted && !isPlaying) {
-      soundRef.current.play();
-    }
-  };
-
   return (
-    <div className="fixed top-6 right-6 z-50 p-1">
-      <Button variant="ghost" size="icon" onClick={toggleMute}>
-        {!hasInteractedRef.current || isMuted ? (
-          <VolumeX className="w-6 h-6 text-muted-foreground transition-all hover:scale-110" />
-        ) : (
-          <Volume2 className="w-6 h-6 text-primary transition-all hover:scale-110" />
-        )}
-      </Button>
-    </div>
+    // Mute/unmute button fixed at top-right corner
+    <Button
+      aria-label={muted ? "Unmute background audio" : "Mute background audio"}
+      onClick={toggleMute}
+      size="icon"
+      className="fixed top-4 right-4 rounded-full p-3 shadow-md bg-muted/90 text-muted-foreground hover:text-accent transition-colors z-50"
+    >
+      {muted ? (
+        <VolumeOff className="w-6 h-6" />
+      ) : (
+        <Volume2 className="w-6 h-6" />
+      )}
+    </Button>
   );
-};
-
-export default AudioPlayer;
+}

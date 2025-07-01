@@ -6,6 +6,21 @@ import { navLinks } from "@/lib/nav/navLink";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
+/**
+ * Navbar – Responsive navigation component.
+ *
+ * Features:
+ * - Desktop: Vertical sidebar fixed to the left, showing full nav links with active highlight.
+ * - Mobile: Bottom horizontal scrollable nav bar optimized for small screens.
+ *
+ * Uses `usePathname` from Next.js to determine the current active route and
+ * applies styles accordingly to highlight the active link.
+ *
+ * Utilizes a utility `cn` function for conditional classNames to keep styling clean.
+ *
+ * Accessibility and smooth UX considered with scroll snapping and hover/focus states.
+ */
+
 export default function Navbar() {
   const pathname = usePathname();
 

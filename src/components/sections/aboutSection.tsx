@@ -6,35 +6,42 @@ import { Button } from "@/components/ui/button";
 import Navbar from "../layouts/Navbar";
 import Link from "next/link";
 
+/**
+ * AboutSection – Introduces brand story, mission, team, and milestones.
+ * Serves as a brand immersion point for visitors.
+ */
 export default function AboutSection() {
   return (
     <section
       className="relative bg-cover bg-center bg-fixed overflow-hidden flex flex-col items-center justify-center py-24 md:py-10 px-6 sm:px-12 lg:px-24 min-h-[100vh]"
       style={{ backgroundImage: "url('/images/Background.webp')" }}
     >
-      {/* Background overlays - lowest z-index */}
-      <div className="absolute inset-0 bg-black/70 z-0"></div>
-      <div className="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-black/30 z-0"></div>
-      <div className="absolute inset-0 bg-background/10 mix-blend-multiply z-0"></div>
+      {/* Background overlays to enhance depth and focus */}
+      <div className="absolute inset-0 bg-black/70 z-0" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-black/30 z-0" />
+      <div className="absolute inset-0 bg-background/10 mix-blend-multiply z-0" />
 
-      {/* Hero Section */}
+      {/* Section Heading */}
       <div className="relative z-10 max-w-2xl text-center mb-16">
         <div className="flex items-center justify-center mb-4">
+          {/* Decorative divider with centered heading */}
           <div className="w-12 h-px bg-accent mr-4" />
           <span className="text-accent font-semibold tracking-wider uppercase text-[2.168rem]">
             About us
           </span>
           <div className="w-12 h-px bg-accent ml-4" />
         </div>
+
+        {/* Introductory brand message */}
         <p className="text-lg text-muted-foreground max-w-xl mx-auto">
           Experience the art of masculine grooming with a team dedicated to
           precision, style, and timeless craftsmanship.
         </p>
       </div>
 
-      {/* Content container with highest z-index */}
+      {/* Main content block: image and brand story */}
       <div className="relative z-10 flex flex-col md:flex-row items-center gap-12 max-w-4xl w-full">
-        {/* Image Side */}
+        {/* Visual representation: shop interior */}
         <div className="relative w-full md:w-3/5 h-80 md:h-[480px] rounded-xl overflow-hidden shadow-lg">
           <Image
             src="/images/shop.avif"
@@ -45,7 +52,7 @@ export default function AboutSection() {
           />
         </div>
 
-        {/* Text Side */}
+        {/* Brand mission and storytelling */}
         <div className="w-full md:w-2/5 space-y-6">
           <h2 className="text-4xl font-extrabold text-primary tracking-tight">
             About Suri Barber Co.
@@ -62,15 +69,16 @@ export default function AboutSection() {
             best. From classic fades to signature beard sculpting, each service
             is a tribute to craftsmanship.
           </p>
+
+          {/* Link to services for deeper engagement */}
           <Button variant="outline" className="mt-4" asChild>
             <Link href="/services">Explore Our Services</Link>
           </Button>
         </div>
       </div>
 
-      {/* Extended Info Section */}
+      {/* Company mission, values, and extended storytelling */}
       <div className="relative z-10 max-w-4xl w-full mt-16 space-y-6">
-        {/* Company Vision & Values */}
         <div className="space-y-4">
           <p className="text-lg text-muted-foreground leading-relaxed">
             <strong>Our Mission:</strong> To elevate self-care by blending
@@ -84,8 +92,9 @@ export default function AboutSection() {
           </p>
         </div>
 
-        {/* Leadership Section - Portrait Style */}
+        {/* Leadership profiles – Founder & Co-founder cards */}
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-8">
+          {/* Founder Card */}
           <div className="bg-background/30 backdrop-blur-md border border-border rounded-xl overflow-hidden shadow-lg">
             <div className="relative w-full h-64 sm:h-72 md:h-96">
               <Image
@@ -107,6 +116,7 @@ export default function AboutSection() {
             </div>
           </div>
 
+          {/* Co-founder Card */}
           <div className="bg-background/30 backdrop-blur-md border border-border rounded-xl overflow-hidden shadow-lg">
             <div className="relative w-full h-64 sm:h-72 md:h-96">
               <Image
@@ -128,7 +138,7 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* Milestones */}
+        {/* Key timeline events in company growth */}
         <div className="mt-10">
           <h3 className="text-xl font-semibold text-primary">Milestones</h3>
           <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
@@ -152,11 +162,12 @@ export default function AboutSection() {
         </div>
       </div>
 
-      {/* Quote with proper spacing and z-index */}
+      {/* Brand message quote to close the section with emotional tone */}
       <blockquote className="mt-20 max-w-3xl mx-auto text-center italic text-accent text-xl font-semibold relative z-10">
         Where tradition meets style, your journey to confidence starts here.
       </blockquote>
 
+      {/* Global navigation overlayed on background */}
       <Navbar />
     </section>
   );
