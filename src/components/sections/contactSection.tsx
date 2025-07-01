@@ -35,7 +35,16 @@ import { supabase } from "@/lib/supabaseClient";
 import { toast } from "sonner";
 import { validateRecaptcha } from "@/lib/reCaptcha";
 
+/**
+ * ContactForm - Handles user inquiries and appointment bookings.
+ * Validates input with Zod and protects submissions with Google reCAPTCHA.
+ * Dynamically shows form fields based on the selected message type (query or appointment).
+ * Submits data to Supabase and provides user feedback via toast notifications.
+ * Designed to be accessible and user-friendly with responsive layout.
+ */
+
 export function ContactForm() {
+  // Initialize form with react-hook-form and Zod validation
   const {
     register,
     handleSubmit,
@@ -44,60 +53,68 @@ export function ContactForm() {
     reset,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
+    resolver: zodResolver(contactFormSchema), // schema validation for form
     defaultValues: {
-      type: "query",
+      type: "query", // default form type is general query
     },
   });
 
+  // Watch form field 'type' to conditionally render appointment-specific inputs
   const selectedType = watch("type");
+
+  // Get the reCAPTCHA execution function from provider
   const { executeRecaptcha } = useGoogleReCaptcha();
 
+  // Handles form submission
   const onSubmit = async (data: ContactFormValues) => {
-    console.log("Form submitted:", data);
-
+    // Safety check: ensure reCAPTCHA is available
     if (!executeRecaptcha) {
       toast.error("reCAPTCHA not available. Please refresh the page.");
       return;
     }
 
     try {
+      // Run reCAPTCHA verification with action label 'contact_form_submit'
       const recaptchaToken = await executeRecaptcha("contact_form_submit");
 
-      // Validate reCAPTCHA
+      // Validate the token on the backend (extra security)
       await validateRecaptcha(recaptchaToken);
 
-      // Build insert payload
+      // Prepare payload according to form type (query or appointment)
       const payload = {
         full_name: data.full_name,
         email: data.email,
-        phone: data.phone || null,
+        phone: data.phone || null, // optional phone
         type: data.type,
         message: data.message,
+        // Only send appointment-specific fields if type === appointment
         service: data.type === "appointment" ? data.service : null,
         preferred_time:
           data.type === "appointment" ? data.preferred_time : null,
       };
 
+      // Insert form data into Supabase table
       const { error } = await supabase
         .from("suri_contact_message_appointment")
         .insert([payload]);
 
       if (error) {
+        // If DB insertion fails, notify user
         console.error("Failed to submit contact form:", error);
         toast.error("Something went wrong. Please try again later.");
         return;
       }
 
-      // Dynamic success message based on form type
+      // Show success message depending on form type
       const successMessage =
         data.type === "appointment"
           ? "Appointment booked successfully!"
           : "Message sent successfully!";
 
       toast.success(successMessage);
-      reset();
+      reset(); // Clear form after successful submission
     } catch (err) {
+      // Catch any unexpected errors and notify user
       console.error("Unexpected error submitting form:", err);
       toast.error("Unexpected error occurred. Please try again.");
     }
@@ -105,8 +122,9 @@ export function ContactForm() {
 
   return (
     <div className="w-full max-w-4xl mx-auto p-4" id="contact-form">
+      {/* Form element that triggers onSubmit handler */}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-        {/* Contact Type Selection */}
+        {/* Radio buttons to select message type: query or appointment */}
         <Card className="border-2 border-dashed border-muted-foreground/20 bg-muted/30">
           <CardContent>
             <FormField id="type" label="" error={errors.type}>
@@ -119,6 +137,7 @@ export function ContactForm() {
                     value={field.value}
                     className="grid grid-cols-2 gap-4"
                   >
+                    {/* General Query option */}
                     <label
                       htmlFor="r1"
                       className="flex items-center space-x-3 p-4 rounded-lg border-2 border-muted hover:border-primary/50 transition-colors cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5"
@@ -136,6 +155,7 @@ export function ContactForm() {
                       </div>
                     </label>
 
+                    {/* Appointment booking option */}
                     <label
                       htmlFor="r2"
                       className="flex items-center space-x-3 p-4 rounded-lg border-2 border-muted hover:border-primary/50 transition-colors cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5"
@@ -159,9 +179,9 @@ export function ContactForm() {
           </CardContent>
         </Card>
 
-        {/* Main Form Content */}
+        {/* Main form fields split into two columns on larger screens */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left Column - Personal Information */}
+          {/* Left column: always visible personal info + message */}
           <Card className="h-fit">
             <CardContent className="p-6 space-y-6">
               <div className="flex items-center gap-2 mb-4">
@@ -169,6 +189,7 @@ export function ContactForm() {
                 <h3 className="text-lg font-semibold">Personal Information</h3>
               </div>
 
+              {/* Full Name field */}
               <FormField
                 id="full_name"
                 label="Full Name"
@@ -185,6 +206,7 @@ export function ContactForm() {
                 </div>
               </FormField>
 
+              {/* Email field */}
               <FormField id="email" label="Email Address" error={errors.email}>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -198,6 +220,7 @@ export function ContactForm() {
                 </div>
               </FormField>
 
+              {/* Phone number field (optional) */}
               <FormField id="phone" label="Phone Number" error={errors.phone}>
                 <div className="relative">
                   <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -211,6 +234,7 @@ export function ContactForm() {
                 </div>
               </FormField>
 
+              {/* Message textarea */}
               <FormField id="message" label="Message" error={errors.message}>
                 <Textarea
                   id="message"
@@ -223,10 +247,11 @@ export function ContactForm() {
             </CardContent>
           </Card>
 
-          {/* Right Column - Appointment Details */}
+          {/* Right column: conditionally rendered appointment details */}
           <div className="space-y-6">
             {selectedType === "appointment" && (
               <>
+                {/* Service selector dropdown */}
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-center gap-2 mb-4">
@@ -291,6 +316,7 @@ export function ContactForm() {
                   </CardContent>
                 </Card>
 
+                {/* Preferred date & time picker */}
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-center gap-2 mb-4">
@@ -323,6 +349,7 @@ export function ContactForm() {
               </>
             )}
 
+            {/* When user selects General Query, show this info card */}
             {selectedType === "query" && (
               <Card className="border-dashed border-2 border-muted-foreground/30">
                 <CardContent className="p-8 text-center">
@@ -340,7 +367,7 @@ export function ContactForm() {
           </div>
         </div>
 
-        {/* Submit Button */}
+        {/* Submit button with loading state and dynamic label */}
         <div className="flex justify-center pt-4">
           <Button
             type="submit"
@@ -350,6 +377,7 @@ export function ContactForm() {
           >
             {isSubmitting ? (
               <div className="flex items-center gap-4">
+                {/* Simple spinner animation */}
                 <div className="w-4 h-4 border-2 border-amber-100 border-t-transparent rounded-full animate-spin" />
                 <span>
                   {selectedType === "appointment" ? "Booking..." : "Sending..."}
@@ -357,6 +385,7 @@ export function ContactForm() {
               </div>
             ) : (
               <div className="flex items-center gap-2">
+                {/* Button icon and label based on form type */}
                 {selectedType === "appointment" ? (
                   <>
                     <Calendar className="w-4 h-4" />

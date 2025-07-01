@@ -16,13 +16,13 @@ export default function Page() {
       className="relative w-full min-h-[100vh] bg-cover bg-center bg-fixed overflow-hidden py-24 md:py-10 px-6 sm:px-10 md:px-16 lg:px-24"
       style={{ backgroundImage: "url('/images/Background.webp')" }}
     >
-      {/* Overlays */}
+      {/*  Visual Layers to increase text legibility on background */}
       <div className="absolute inset-0 bg-black/60" />
       <div className="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-black/30" />
       <div className="absolute inset-0 bg-background/10 mix-blend-multiply" />
 
-      <div className="relative z-10 ">
-        {/* Header Section */}
+      <div className="relative z-10">
+        {/* 📢 Page Heading */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 sm:w-12 h-px bg-accent mr-3 sm:mr-4" />
@@ -31,19 +31,21 @@ export default function Page() {
               Suri Barber Co.
             </h1>
             <Scissors className="w-8 h-8 text-accent scale-x-[-1]" />
-            <div className="w-8 sm:w-12 h-px bg-accent mr-3 sm:mr-4" />
+            <div className="w-8 sm:w-12 h-px bg-accent ml-3 sm:ml-4" />
           </div>
           <p className="text-muted-foreground text-lg">
             Get in touch with us for inquiries or book your appointment
           </p>
         </div>
 
+        {/* Contact Form with reCAPTCHA */}
         <RecaptchaProvider>
           <ContactForm />
         </RecaptchaProvider>
 
+        {/* Location and Contact Info Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-4xl mx-auto px-6 py-16">
-          {/* Map Section */}
+          {/* 🗺 Google Map Embed */}
           <div className="space-y-6">
             <div className="text-center lg:text-left">
               <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-2">
@@ -64,8 +66,9 @@ export default function Page() {
             </div>
           </div>
 
-          {/* Contact Info Section */}
+          {/*  Info Blocks – Location, Phone, Email, Hours */}
           <div className="bg-muted/40 p-8 shadow-sm space-y-8">
+            {/* Location */}
             <div>
               <h3 className="text-xl font-semibold text-primary flex items-center gap-2 mb-2">
                 <MapPin size={20} /> Studio Location
@@ -79,6 +82,7 @@ export default function Page() {
               </p>
             </div>
 
+            {/* Contact */}
             <div>
               <h3 className="text-xl font-semibold text-primary flex items-center gap-2 mb-2">
                 <Phone size={20} /> Contact
@@ -96,6 +100,7 @@ export default function Page() {
               </p>
             </div>
 
+            {/* Working Hours */}
             <div>
               <h3 className="text-xl font-semibold text-primary flex items-center gap-2 mb-2">
                 <Clock4 size={20} /> Working Hours
@@ -119,14 +124,17 @@ export default function Page() {
             </div>
           </div>
         </div>
+
+        {/* Footer Branding */}
         <div className="border-t border-border text-center text-sm text-muted-foreground tracking-wide">
           <small>
             &copy; {new Date().getFullYear()} Suri Barber Co. All rights
-            reserved. reserved.
+            reserved.
           </small>
         </div>
       </div>
 
+      {/* Sticky Navbar */}
       <Navbar />
     </section>
   );
