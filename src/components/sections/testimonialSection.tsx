@@ -8,12 +8,22 @@ import { EmblaCarousel } from "../ui/custom/emblaCarousel";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Navbar from "../layouts/Navbar";
 import Link from "next/link";
+import { motion, Variants } from "framer-motion";
 
 /**
  * TestimonialSection – Displays user testimonials in a carousel and highlights trust signals.
  * Focuses on social proof to convert visitors into clients.
  */
 export default function TestimonialSection() {
+  const fadeInUp: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, ease: "easeOut" },
+    },
+  };
+
   return (
     <section
       className="relative w-full min-h-[100vh] bg-cover bg-center bg-fixed overflow-hidden flex flex-col items-center justify-center py-24 md:py-10"
@@ -25,7 +35,13 @@ export default function TestimonialSection() {
       <div className="absolute inset-0 bg-background/10 mix-blend-multiply" />
 
       {/* Header + Brand Message */}
-      <div className="relative z-10 text-center mb-12 sm:mb-16 md:mb-20 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        className="relative z-10 text-center mb-12 sm:mb-16 md:mb-20 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.1 }}
+      >
         {/* Decorative accent title */}
         <div className="flex items-center justify-center mb-3 sm:mb-4">
           <div className="w-8 sm:w-12 h-px bg-accent mr-3 sm:mr-4" />
@@ -51,13 +67,26 @@ export default function TestimonialSection() {
         <Button className="text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3">
           <Link href="/contact#contact-form">Join Our Happy Clients</Link>
         </Button>
-      </div>
+      </motion.div>
 
       {/* Embla Carousel – Horizontal scroll for testimonials */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.1 }}
+      >
         <EmblaCarousel className="w-full">
           {clientTestimonials.map((testimonial, index) => (
-            <div key={index} className="flex-[0_0_100%] min-w-0 px-2 sm:px-4">
+            <motion.div
+              key={index}
+              className="flex-[0_0_100%] min-w-0 px-2 sm:px-4"
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.2 }}
+            >
               <Card className="w-full bg-muted/20 backdrop-blur-md border border-border shadow-md p-4 sm:p-6 text-left flex flex-col h-full">
                 {/* Header with avatar, name, service, location */}
                 <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-5 p-0 mb-4 sm:mb-6">
@@ -103,13 +132,19 @@ export default function TestimonialSection() {
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
           ))}
         </EmblaCarousel>
-      </div>
+      </motion.div>
 
       {/* Special Featured Review */}
-      <div className="relative z-10 mt-12 sm:mt-16 md:mt-24 text-center w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+      <motion.div
+        className="relative z-10 mt-12 sm:mt-16 md:mt-24 text-center w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-20"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.1 }}
+      >
         <p className="text-accent font-medium text-xs sm:text-sm mb-2 uppercase tracking-wider">
           Client of the Month
         </p>
@@ -127,10 +162,16 @@ export default function TestimonialSection() {
             </div>
           </CardContent>
         </Card>
-      </div>
+      </motion.div>
 
       {/* CTA – Invite to leave a review */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
+      <motion.div
+        className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.1 }}
+      >
         <Button
           variant="outline"
           size="lg"
@@ -141,12 +182,18 @@ export default function TestimonialSection() {
         >
           Write a review
         </Button>
-      </div>
+      </motion.div>
 
       {/* Closing quote to reinforce emotional branding */}
-      <blockquote className="mt-10 max-w-2xl mx-auto text-center italic text-accent text-xl font-semibold relative z-10 px-4">
+      <motion.blockquote
+        className="mt-10 max-w-2xl mx-auto text-center italic text-accent text-xl font-semibold relative z-10 px-4"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.1 }}
+      >
         &quot;Style is a way to say who you are without having to speak.&quot;
-      </blockquote>
+      </motion.blockquote>
 
       {/* Persistent navigation */}
       <Navbar />
